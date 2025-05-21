@@ -469,9 +469,7 @@ function CarsDetails() {
             </div>
           )}
 
-          {auto.descriptionAuto && (
-            <CardDescription descriptionAuto={auto.descriptionAuto} />
-          )}
+          {auto && <CardDescription descriptionAuto={auto.descriptionAuto} />}
 
           {
             <div className="w-full mt-4 border-[1px] border-solid border-[#33333359] shadow-2xl rounded-md ">
