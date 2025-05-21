@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/carousel";
 
 import axios from "axios";
-import ImageWithSkeleton from "./ImageWithSkeleton";
+import ImageWithSkeleton, { ImageWithSkeleton2 } from "./ImageWithSkeleton";
 import SkeletonTrue from "./SkeletonTrue";
 import Image from "next/image";
 
@@ -103,11 +103,7 @@ export function ImageCaroussel2({
     };
     getImagesAuto();
   }, []);
-  /**
-   * ghttttttt
-   * ggggggggg
-   * ggggggggg
-   */
+
   return (
     <Carousel className={className}>
       <CarouselContent>
@@ -115,7 +111,7 @@ export function ImageCaroussel2({
           images.map((value, index) => (
             <CarouselItem key={index}>
               {value.url && (
-                <ImageWithSkeleton
+                <ImageWithSkeleton2
                   src={value.url.split("--")[0]}
                   alt=""
                   className="w-full object-cover rounded-t-lg "
@@ -124,8 +120,16 @@ export function ImageCaroussel2({
             </CarouselItem>
           ))}
       </CarouselContent>
-      <CarouselPrevious position={position} setPosition={setPosition} />
-      <CarouselNext position={position} setPosition={setPosition} />
+      <CarouselPrevious
+        position={position}
+        setPosition={setPosition}
+        className="ml-3"
+      />
+      <CarouselNext
+        position={position}
+        setPosition={setPosition}
+        className="mr-3"
+      />
     </Carousel>
   );
 }

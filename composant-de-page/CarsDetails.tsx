@@ -243,7 +243,7 @@ function CarsDetails() {
         <p className="ml-2 w-full flex-1 font-[800] ">Retour à l'inventaire</p>
       </Link>
 
-      <div className="flex flex-grow flex-col mt-6 xl:flex-row xl:gap-2">
+      <div className="flex flex-grow flex-col mt-6 xl:flex-row xl:gap-2 mx-2">
         {auto && (
           <div className="flex flex-col">
             <div className="flex items-center gap-2 px-1.5">
@@ -448,8 +448,11 @@ function CarsDetails() {
                     <p>{auto.id}</p>
                   </div>
                   {auto.climatisation && (
-                    <div className="flex items-center gap-2">
-                      <span className="icon-[iconoir--air-conditioner]"></span>
+                    <div className="grid grid-cols-2 gap-3">
+                      <p>
+                        {" "}
+                        <strong>Climatisation:</strong>{" "}
+                      </p>
                       <p>{auto.climatisation}</p>
                     </div>
                   )}
