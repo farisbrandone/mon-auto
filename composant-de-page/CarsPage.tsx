@@ -529,11 +529,11 @@ function CarsPage() {
                   setPosition={setPosition}
                   imagesAuto={val._links.imagesAuto.href}
                 />
-                <p className="w-full flex items-center font-[900] justify-end text-red-600 mt-2 text-[20px] mr-1 ">
+                <p className="w-full flex items-center font-[900] justify-end text-red-600 mt-3 text-[20px] mr-1 ">
                   FCFA {formatMoney(val.prix)}
                 </p>
 
-                <p className="w-full font-black text-[18px] flex flex-col p-2 mt-2 after:w-full after:border-1 after:border-solid after:mt-2 after:border-[#33333383] ">
+                <p className="w-full font-black text-[18px] flex flex-col p-2  after:w-full after:border-1 after:border-solid after:mt-2 after:border-[#33333383] ">
                   model: {formatDate(val.anneeDeFabrication)} {val.marques}{" "}
                   {val.model}
                 </p>
