@@ -437,8 +437,12 @@ export default function AddAutoPage() {
       toast.success("Le téléchargement s'est effectué avec success");
     } catch (err) {
       console.error("Upload error:", err);
+
       toast.error("Une erreur est survenue pendant la téléchargement");
     } finally {
+      if (images_autoInputRef.current) {
+        images_autoInputRef.current.value = "";
+      }
       setIsUploading(false);
     }
   };

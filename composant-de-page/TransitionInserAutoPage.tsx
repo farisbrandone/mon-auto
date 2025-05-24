@@ -9,26 +9,26 @@ import HeaderCars from "@/components/HeaderCars";
 export default function TransitionInserAutoPage() {
   const router = useRouter();
   return (
-    <div className="bg-white flex flex-col  justify-center items-center w-screen h-screen text-[#636364] p-2 text-[16px] ">
+    <div className="bg-white flex flex-col  justify-center items-center w-screen h-screen text-[#636364] p-5 text-[16px]  ">
       <HeaderCars />
       <motion.div
         initial={{ opacity: 0, y: 60 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="relative flex items-center justify-center p-3 min-w-[250px]  sm:min-w-[350px] h-[300px] loginShaddow"
+        className="relative flex items-center justify-center p-3 min-w-[250px]  sm:min-w-[300px] h-[250px] loginShaddow rounded-lg"
       >
         <h1 className="text-2xl font-bold mb-4 text-green-600 w-full text-center">
           L'auto a été inserée avec success
         </h1>
-        <div className="absolute flex flex-col gap-3 bottom-1 w-full p-1 ">
+        <div className="absolute flex flex-col gap-3  bottom-1 w-full p-1 ">
           <Button
-            className="bg-red-400 text-white w-full px-1 py-2.5 text-center"
+            className="bg-red-400 hover:bg-red-400 text-white w-full text-xl  px-1 py-2.5 text-center cursor-pointer"
             onClick={() => router.push("/addAuto")}
           >
             Inserer une nouvelle auto
           </Button>
           <Button
-            className="bg-[#333333] text-white w-full px-1 py-2.5 text-center"
+            className="bg-[#333333] text-white w-full text-xl px-1 py-2.5 text-center cursor-pointer"
             onClick={() => router.push("/cars")}
           >
             Retour à l'accueil

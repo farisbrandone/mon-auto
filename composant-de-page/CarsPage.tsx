@@ -521,7 +521,7 @@ function CarsPage() {
             return (
               <div
                 ref={index === autos.length - 1 ? lastCarElementRef : null}
-                className=" p-1 flex flex-col items-center max-w-xl mx-auto  border-[1px] border-[#00000021] border-solid  rounded-lg cardDetailShadow"
+                className=" p-1 flex flex-col items-center max-w-xl   border-[1px] border-[#00000021] border-solid  rounded-lg cardDetailShadow"
               >
                 <ImageCaroussel
                   className="w-full max-w-xl rounded-lg max-h-[260px] sm:max-h-[388px] "
