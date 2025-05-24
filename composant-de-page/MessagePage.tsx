@@ -167,6 +167,9 @@ export default function MessagePage() {
           </form>
         </div>
       </motion.div>
+      <p className="text-sm w-full flex-1  text-center ">
+        © {new Date().getUTCFullYear()} PAMOD TECHNOLOGIE, All rights reserved.
+      </p>
     </div>
   );
 }

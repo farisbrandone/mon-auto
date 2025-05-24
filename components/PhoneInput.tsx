@@ -27,13 +27,13 @@ export function PhoneInput<T extends FieldValues>({
 }: PhoneInputProps<T>) {
   return (
     <div className={className}>
-      <div className="flex gap-2">
+      <div className="flex items-center gap-2">
         <div className="flex flex-col">
           <label
             htmlFor={`${name}.countryCode`}
-            className="block text-sm font-medium mb-1"
+            className="block text-sm font-medium"
           >
-            Phone code
+            {label}
           </label>
 
           <select
@@ -42,7 +42,7 @@ export function PhoneInput<T extends FieldValues>({
             {...register(`${name}.countryCode`)}
             className="max-w-[150px]"
           >
-            {countries.map((country, index) => {
+            {countries.sort().map((country, index) => {
               const code = getCode(country);
               if (index === 1) {
                 console.log(code, countryTelData.allCountries[0].iso2);
@@ -63,14 +63,14 @@ export function PhoneInput<T extends FieldValues>({
           </select>
         </div>
         <div className="flex flex-col">
-          {label && (
+          {/*   {label && (
             <label
               htmlFor={`${name}.number`}
               className="block text-sm font-medium mb-1"
             >
               {label}
             </label>
-          )}
+          )} */}
 
           <Input
             id={`${name}.number`}

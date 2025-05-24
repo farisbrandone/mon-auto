@@ -137,6 +137,10 @@ function ConfirmPage1() {
             Patientez svp, vous etes redirigez vers la page de connexion....
           </p>
         </motion.div>
+        <p className="text-sm w-full flex-1  text-center ">
+          © {new Date().getUTCFullYear()} PAMOD TECHNOLOGIE, All rights
+          reserved.
+        </p>
       </div>
     );
   }
@@ -161,6 +165,10 @@ function ConfirmPage1() {
             Contactez le support
           </button>
         </motion.div>
+        <p className="text-sm w-full flex-1  text-center ">
+          © {new Date().getUTCFullYear()} PAMOD TECHNOLOGIE, All rights
+          reserved.
+        </p>
       </div>
     );
   }
@@ -175,6 +183,9 @@ function ConfirmPage1() {
       >
         <h1 className="text-2xl font-bold mb-4">Validation du token...</h1>
       </motion.div>
+      <p className="text-sm w-full flex-1  text-center ">
+        © {new Date().getUTCFullYear()} PAMOD TECHNOLOGIE, All rights reserved.
+      </p>
     </div>
   );
 }

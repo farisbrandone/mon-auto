@@ -22,6 +22,7 @@ import { fileResponseType } from "./AddAutoPage";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { uploadFile } from "@/app/actions/actions";
+import CountryDisplay from "@/hook/getCountryWithIpAdress";
 
 export default function SellerSigup() {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -50,6 +51,11 @@ export default function SellerSigup() {
       activeState: false,
     },
   });
+
+  const { countryCode, countryName } = CountryDisplay();
+
+  if (countryCode) setValue("phone.countryCode", countryCode);
+  if (countryCode) setValue("phoneWhatsapp.countryCode", countryCode);
 
   /* const handleFileDoc = async (e: React.ChangeEvent<HTMLInputElement>) => {
    
@@ -290,9 +296,9 @@ export default function SellerSigup() {
             <div>
               <label
                 htmlFor="confirmPassword"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-gray-700 text-nowrap overflow-clip"
               >
-                Confirmer le mot de passe *
+                Confirmer mot de passe *
               </label>
               <input
                 id="confirmPassword"
@@ -530,17 +536,16 @@ export default function SellerSigup() {
               error={errors.country?.message}
               label="Pays"
             />
-
-            <PhoneInput
-              name="phone"
-              label="Téléphone"
-              error={errors.phone?.message}
-              register={register}
-            />
           </div>
           <PhoneInput
+            name="phone"
+            label="Téléphone"
+            error={errors.phone?.message}
+            register={register}
+          />
+          <PhoneInput
             name="phoneWhatsapp"
-            label="Téléphone Whatsapp"
+            label="Whatsapp"
             error={errors.phoneWhatsapp?.message}
             register={register}
           />

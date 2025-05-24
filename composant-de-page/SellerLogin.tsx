@@ -175,6 +175,10 @@ const SellerLogin = () => {
         className=" w-full h-full hidden sm:flex"
       />
 
+      <p className="fixed text-sm w-full flex-1  text-center bottom-1  ">
+        © {new Date().getUTCFullYear()} PAMOD TECHNOLOGIE, All rights reserved.
+      </p>
+
       {/*   <img
         src="/auth-image.jpg"
         alt=""
