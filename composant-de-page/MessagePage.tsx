@@ -14,7 +14,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { sendContact } from "@/app/actions/actions";
 import HeaderCars from "@/components/HeaderCars";
-import Footer from "@/components/Footer";
 
 export default function MessagePage() {
   const [disableAfterSend, setDisableAfterSend] = useState(false);

@@ -4,22 +4,7 @@ import HeaderCars from "@/components/HeaderCars";
 import { Localisation } from "@/components/icon/Localisation";
 import { Telephone } from "@/components/icon/Telephone";
 import { ImageCaroussel } from "@/components/ImageCarousel";
-import VehicleColorPicker, { ColorOption } from "@/components/SelectColors2";
-import { SelectComponent } from "@/components/SelectComponent";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import {
-  FUEL_TYPES,
-  MARQUES,
-  MIN_YEAR,
-  TRANSMISSION_TYPES,
-  TYPES_CARROSSERIE,
-  TYPES_MOTEUR,
-  villesCameroun,
-} from "@/lib/constants/carProperties";
-import { Search } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import {
@@ -32,12 +17,9 @@ import {
 } from "@/lib/utils";
 
 import { useInfiniteAutos } from "@/hook/useInfiniteAuto";
-import { useForm } from "react-hook-form";
-import { searchForm, searchSchema } from "@/lib/validations/seller";
-import { zodResolver } from "@hookform/resolvers/zod";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import LoadingComponent from "@/components/LoadingComponent";
-import { ImageWithSkeleton4 } from "@/components/ImageWithSkeleton";
+import ImageWithSkeleton from "@/components/ImageWithSkeleton";
 import SearchComponent from "@/components/SearchComponent";
 
 export interface SearchCriteria {
@@ -58,10 +40,8 @@ export interface SearchCriteria {
   // Add other search criteria as needed
 }
 
-function CarsPage() {
-  const router = useRouter();
+function CarsPageCopy() {
   const [position, setPosition] = useState(0);
-
   const [lolo, setLolo] = useState(true);
 
   const { autos, loading, hasMore, fetchMore } = useInfiniteAutos();
@@ -91,37 +71,8 @@ function CarsPage() {
     <div className="text-black text-[16px] min-h-screen flex flex-col ">
       <HeaderCars />
       <ScrollToTopButton />
-      <div className="relative w-full mt-[100px] ">
-        <ImageWithSkeleton4
-          src="/auth-image.jpg"
-          alt=""
-          className=" w-full h-full  flex"
-        />
-        <div className="absolute w-full top-0 left-0 h-[100%] bg-black/20 z-30  "></div>
-        <div className="top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] w-full absolute flex flex-col  font-[600]  text-[#fffafa] text-[16px] sm:text-[20px] z-40 ">
-          <div className="self-center max-sm:ml-5">
-            <p className=" text-xl sm:text-3xl select-none font-[900]">
-              Bienvenue sur Auto-Occaz.com
-            </p>
-            <p>Le meilleur choix pour l'achat de ton véhicule en occasion</p>
-            <p className="max-sm:hidden">
-              Recherche, filtre, trie et trouve le véhicule qui te convient
-            </p>
-            <button
-              className="dashButton mt-4"
-              onClick={() => router.push("/cars")}
-            >
-              Commence ici
-            </button>
-          </div>
-          {/*   <div className="w-full text-black p-2">
-            <SearchComponent />
-          </div> */}
-        </div>
-      </div>
 
-      <SearchComponent />
-      <p className="ml-2 font-bold">Parcoure les autos les plus visitées</p>
+      <SearchComponent mt="mt-[100px]" />
       <div className="flex flex-col sm:grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 w-full gap-4 mb-3.5 p-2">
         {autos &&
           autos?.map((val, index) => {
@@ -196,7 +147,7 @@ function CarsPage() {
                     <div className="flex items-center">
                       <Localisation color="#d14141" />
                       <p className="ml-1 hover:text-red-600  cursor-pointer ">
-                        Auto-Occaz.com
+                        MonAuto.com
                       </p>{" "}
                     </div>
                     <div className="flex items-center">
@@ -231,4 +182,4 @@ function CarsPage() {
   );
 }
 
-export default CarsPage;
+export default CarsPageCopy;

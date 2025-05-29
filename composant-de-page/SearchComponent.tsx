@@ -3,9 +3,9 @@ import Footer from "@/components/Footer";
 import HeaderCars from "@/components/HeaderCars";
 import { Localisation } from "@/components/icon/Localisation";
 import { Telephone } from "@/components/icon/Telephone";
-import { ImageCaroussel, ImageCaroussel3 } from "@/components/ImageCarousel";
+import { ImageCaroussel3 } from "@/components/ImageCarousel";
 import VehicleColorPicker, { ColorOption } from "@/components/SelectColors2";
-import { SelectComponent, SelectCouleur } from "@/components/SelectComponent";
+import { SelectComponent } from "@/components/SelectComponent";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -88,8 +88,6 @@ function SearchComponent1() {
       kilometrageMin: null,
     },
   });
-
-  const router = useRouter();
 
   const [couleur, setCouleur] = useState("");
   const [selectedColor, setSelectedColor] = useState<ColorOption | null>(null);
