@@ -23,6 +23,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { uploadFile } from "@/app/actions/actions";
 import CountryDisplay from "@/hook/getCountryWithIpAdress";
+import Footer from "@/components/Footer";
 
 export default function SellerSigup() {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -578,9 +579,7 @@ export default function SellerSigup() {
         </form>
       </motion.div>
       {/* </div> */}
-      <p className="text-sm w-full flex-1  text-center ">
-        © {new Date().getUTCFullYear()} PAMOD TECHNOLOGIE, All rights reserved.
-      </p>
+      <Footer />
     </div>
   );
 }
