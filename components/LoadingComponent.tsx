@@ -4,7 +4,7 @@ import React from "react";
 
 export default function LoadingComponent() {
   return (
-    <div className="fixed min-h-screen top-0 left-0 right-0 border-0 bg-[#f3f2f2] flex flex-col gap-1 items-center justify-center z-200000000">
+    <div className="fixed min-h-screen top-0 left-0 right-0 border-0 bg-[#f3f2f2] flex flex-col  items-center justify-center z-200000000">
       {/*  <div className="spinner"></div> */}
       <svg viewBox="0 0 1280 720" className="svgLoading">
         <text
@@ -26,7 +26,9 @@ export default function LoadingComponent() {
           </linearGradient>
         </defs>
       </svg>
-      <p className="loading-text text-black">Chargement...</p>
+      <p className="loading-text text-black text-[20px] sm:text-[30px] mt-[-20px]">
+        Chargement...
+      </p>
     </div>
   );
 }

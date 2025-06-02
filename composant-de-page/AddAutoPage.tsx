@@ -20,10 +20,11 @@ import {
   registerSeller,
   uploadFile,
   uploadMultipleFile,
+  verifiedToken,
 } from "@/app/actions/actions"; // À implémenter
 import Image from "next/image";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import MyLogo from "@/components/MyLogo";
+import MyLogo, { Logo } from "@/components/MyLogo";
 import { CalendarIcon } from "@heroicons/react/20/solid";
 import { Controller } from "react-hook-form";
 import DatePicker from "react-datepicker";
@@ -38,6 +39,8 @@ import axios from "axios";
 import { toast } from "sonner";
 import { CrossIcon, LoaderCircleIcon } from "lucide-react";
 import DeleteImageMultiple from "@/components/DeleteImageMultiple";
+import HeaderCars from "@/components/HeaderCars";
+import LoadingComponent from "@/components/LoadingComponent";
 
 export interface UploadProgress {
   fileName: string;
@@ -68,6 +71,7 @@ export default function AddAutoPage() {
   console.log(errors);
 
   const [autreAuto, setAutreAuto] = useState("");
+  const [display, setDisplay] = useState(false);
   const [selectedColor, setSelectedColor] = useState<ColorOption | null>(null);
   const [selectedColor2, setSelectedColor2] = useState<ColorOption | null>(
     null
@@ -518,14 +522,32 @@ export default function AddAutoPage() {
   };
 
   useEffect(() => {
+    const verifiedMyToken = async (token: string) => {
+      try {
+        const result = await verifiedToken(token);
+        console.log(result);
+        setDisplay(true);
+      } catch (error) {
+        setDisplay(false);
+        window.location.replace("/seller-login");
+      }
+    };
     if (!localStorage.getItem("mon-auto-token")) {
+      setDisplay(false);
       window.location.replace("/seller-signup");
+      return;
     }
+    const token = JSON.parse(localStorage.getItem("mon-auto-token") as string);
+    verifiedMyToken(token["access-token"]);
   }, []);
+
+  if (!display) {
+    return <LoadingComponent />;
+  }
 
   return (
     <div className="max-w-2xl mx-auto  my-10 p-6 bg-white font-playfair">
-      <MyLogo />
+      <HeaderCars />
       <ScrollToTopButton />
       <motion.div
         initial={{ opacity: 0, y: 60 }}
@@ -1397,9 +1419,7 @@ export default function AddAutoPage() {
           </button>
         </div>
       </motion.div>
-      <p className="text-sm w-full flex-1  text-center ">
-        © {new Date().getUTCFullYear()} PAMOD TECHNOLOGIE, All rights reserved.
-      </p>
+      <Footer />
     </div>
   );
 }

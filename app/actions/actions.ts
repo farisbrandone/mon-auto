@@ -913,6 +913,22 @@ export const refreshToken = async (token: any) => {
   }
 };
 
+export const verifiedToken = async (token: any) => {
+  try {
+    const response = await axios.get(
+      `${baseUrl}/verified-token?token=${token}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token["refresh-token"]}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    redirect("/seller-login");
+  }
+};
+
 export const deleteFile = async (token: any, fileName: string) => {
   try {
     const response = await axios.delete(
