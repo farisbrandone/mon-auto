@@ -24,7 +24,7 @@ function HeaderCars() {
           <Message width={25} height={25} color="white" />
           <p className="">Nous contacter</p>
         </div>
-        <DropdownMenuDemo />
+        {/*  <DropdownMenuDemo /> */}
         <div className="  w-[35px] h-[35px] lg:w-[180px] flex items-center justify-center cursor-pointer">
           <Link
             href="/add-auto"
@@ -39,7 +39,7 @@ function HeaderCars() {
           {/*  <Hamburger width={30} height={30} color="white" /> */}
         </div>
       </div>
-      <div className="fixed top-[20px] right-2   sm:hidden bodyBurger">
+      <div className="fixed top-[20px] right-2   lg:hidden bodyBurger">
         <input className="burger-check" id="burger-check" type="checkbox" />
         <label htmlFor="burger-check" className="burger"></label>
         <nav

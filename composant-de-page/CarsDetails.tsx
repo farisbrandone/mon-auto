@@ -118,7 +118,7 @@ function CarsDetails() {
         <div className="p-2 bg-[#333333] flex items-center rounded-sm ">
           <Previous color="white" />
           <Previous color="white" className="-ml-1" />
-          <p className="ml-2 w-full flex-1 font-[800] ">Retour</p>
+          <p className="ml-2 w-full flex-1 font-[800] text-white ">Retour</p>
         </div>
       </Link>
 
