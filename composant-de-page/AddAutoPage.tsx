@@ -69,7 +69,7 @@ export default function AddAutoPage() {
   });
 
   console.log(errors);
-
+  const currentYear = new Date().getFullYear();
   const [autreAuto, setAutreAuto] = useState("");
   const [display, setDisplay] = useState(false);
   const [selectedColor, setSelectedColor] = useState<ColorOption | null>(null);
@@ -413,9 +413,9 @@ export default function AddAutoPage() {
         const file = files[i];
         const formData = new FormData();
         formData.append("file", file); // Note 'files' instead of 'file'
-        if (!localStorage.getItem("mon-auto-token")) {
+        /*    if (!localStorage.getItem("mon-auto-token")) {
           router.push("/seller-signup");
-        }
+        } */
         const token = JSON.parse(
           localStorage.getItem("mon-auto-token") as string
         );
@@ -431,7 +431,6 @@ export default function AddAutoPage() {
         const values = Object.values(val.data) as string[];
         setUploadProgressMultiple((prev) =>
           prev.map((item) => {
-            console.log({ name: item.fileName, keyss: keys[0] });
             return item.fileName === keys[0]
               ? { ...item, downloadUrl: values[0], originalName: keys[0] }
               : item;
@@ -524,12 +523,17 @@ export default function AddAutoPage() {
   useEffect(() => {
     const verifiedMyToken = async (token: string) => {
       try {
-        const result = await verifiedToken(token);
-        console.log(result);
+        const result = await refreshToken(token);
+        console.log({ result });
+        /* 
+         const val = JSON.stringify(response.token);
+          localStorage.setItem("mon-auto-token", val);
+        */
         setDisplay(true);
       } catch (error) {
+        console.log(error);
         setDisplay(false);
-        window.location.replace("/seller-login");
+        //window.location.replace("/seller-login");
       }
     };
     if (!localStorage.getItem("mon-auto-token")) {
@@ -538,7 +542,7 @@ export default function AddAutoPage() {
       return;
     }
     const token = JSON.parse(localStorage.getItem("mon-auto-token") as string);
-    verifiedMyToken(token["access-token"]);
+    verifiedMyToken(token);
   }, []);
 
   if (!display) {
@@ -546,7 +550,7 @@ export default function AddAutoPage() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto  my-10 p-6 bg-white font-playfair">
+    <div className="relative max-w-2xl mx-auto  my-10 mb-0 p-6 bg-white font-playfair">
       <HeaderCars />
       <ScrollToTopButton />
       <motion.div
@@ -559,7 +563,7 @@ export default function AddAutoPage() {
           {/* Spécialisations */}
           <div className="space-y-4 ">
             <h2 className="text-[16px]  sm:text-[18px] font-semibold">
-              Caractéristique de l'auto
+              Insérer une auto
             </h2>
 
             <div className="text-sm">
@@ -1419,7 +1423,11 @@ export default function AddAutoPage() {
           </button>
         </div>
       </motion.div>
-      <Footer />
+      <div className="copyright absolute bottom-0 w-full text-center ">
+        <p className="">
+          &copy; PAMOD TECHNOLOGIE , All Right Reserved {currentYear}
+        </p>
+      </div>
     </div>
   );
 }

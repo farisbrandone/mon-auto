@@ -916,16 +916,15 @@ export const refreshToken = async (token: any) => {
 export const verifiedToken = async (token: any) => {
   try {
     const response = await axios.get(
-      `${baseUrl}/verified-token?token=${token}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token["refresh-token"]}`,
-        },
-      }
+      `${baseUrl}/verified-token?token=${token}`
     );
+    console.log(response.status);
+    console.log(response.data);
     return response.data;
   } catch (error) {
-    redirect("/seller-login");
+    console.log(error);
+    // redirect("/seller-login");
+    throw error;
   }
 };
 
@@ -1030,7 +1029,7 @@ export const uploadFile = async (token: any, formData: FormData) => {
                 },
               }
             );
-
+            console.log({ status: response2.status });
             if (response2.status === 200) {
               return {
                 success: true,

@@ -283,7 +283,7 @@ const ImageWithSkeleton4: React.FC<ImageWithSkeletonProps> = ({
         <img
           src={src}
           alt={alt}
-          className="w-full h-full object-cover block rounded-md blurImage "
+          className="w-full h-full object-cover block rounded-md  "
           /*  style={{
             width: "100%",
             height: "100%",

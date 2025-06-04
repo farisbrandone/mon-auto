@@ -528,10 +528,11 @@ small {
 
 .svgLoading {
   font: "Classical Romance", "Ubuntu";
-  font-size: 10em;
+  font-size: 7em;
+  font-weight: 900;
   /* letter-spacing: 0.15em; */
-  width: 50%;
-  height: 50%;
+  /*  width: 50%;
+  height: 50%; */
   text-transform: uppercase;
 }
 
