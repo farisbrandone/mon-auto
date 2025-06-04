@@ -115,11 +115,11 @@ function CarsDetails() {
         href="/cars"
         className="flex items-center  cursor-pointer pl-2 w-[250px] mt-[100px] "
       >
-        <div className="p-1.5 bg-[#333333] flex items-center rounded-sm ">
+        <div className="p-2 bg-[#333333] flex items-center rounded-sm ">
           <Previous color="white" />
           <Previous color="white" className="-ml-1" />
+          <p className="ml-2 w-full flex-1 font-[800] ">Retour</p>
         </div>
-        <p className="ml-2 w-full flex-1 font-[800] ">Retour à l'inventaire</p>
       </Link>
 
       <div className="flex flex-grow flex-col mt-6 xl:flex-row xl:gap-2 mx-2">
