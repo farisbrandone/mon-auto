@@ -127,6 +127,10 @@
   }
 }
 
+a {
+  text-decoration: none;
+}
+
 /* Personnalisation du DatePicker */
 .react-datepicker {
   font-family: inherit;
@@ -509,7 +513,7 @@ small {
 .headerLi {
   list-style: none;
   font-size: 16px;
-  padding: 5px 0;
+  padding: 5px 5px;
 
   .headerA {
     text-decoration: none;
@@ -528,7 +532,7 @@ small {
 
 .svgLoading {
   font: "Classical Romance", "Ubuntu";
-  font-size: 7em;
+  font-size: 50px;
   font-weight: 900;
   /* letter-spacing: 0.15em; */
   /*  width: 50%;
@@ -562,5 +566,11 @@ small {
   }
   100% {
     stroke-width: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .svgLoading {
+    font-size: 90px;
   }
 }

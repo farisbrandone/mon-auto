@@ -56,6 +56,7 @@ export const SellerSchema = z.object({
   descriptionAuto: z
     .string()
     .min(0, "Doit contenir au moins un caractères")
+    .max(5000, "Doit contenir au plus 5000 caractères")
     .optional(),
   villeDuBien: z
     .string()
@@ -407,6 +408,7 @@ export const SellerUpdateSchema = z.object({
   climatisation: z.string().default("").optional(),
   descriptionAuto: z
     .string()
+    .max(5000, "Doit avoir moins de 5000 mots")
     .min(0, "Doit contenir au moins un caractères")
     .optional(),
   villeDuBien: z

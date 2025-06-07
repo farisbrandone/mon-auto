@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import { motion } from "framer-motion";
 import {
   Carousel,
   CarouselContent,
@@ -9,9 +9,14 @@ import {
 } from "@/components/ui/carousel";
 
 import axios from "axios";
-import ImageWithSkeleton, { ImageWithSkeleton2 } from "./ImageWithSkeleton";
+import ImageWithSkeleton, {
+  ImageWithSkeleton2,
+  ImageWithSkeleton5,
+} from "./ImageWithSkeleton";
 import SkeletonTrue from "./SkeletonTrue";
 import Image from "next/image";
+import { ZoomIcon } from "./icon/ZoomIcon";
+import clsx from "clsx";
 
 export const tab = [
   "/vehicule1.jpg",
@@ -91,6 +96,8 @@ export function ImageCaroussel2({
   setImages: React.Dispatch<React.SetStateAction<any[] | null | undefined>>;
   images: any[] | null | undefined;
 }) {
+  const [displayZoom, setDisplayZoom] = React.useState(false);
+
   React.useEffect(() => {
     const getImagesAuto = async () => {
       try {
@@ -105,32 +112,82 @@ export function ImageCaroussel2({
   }, []);
 
   return (
-    <Carousel className={className}>
-      <CarouselContent>
-        {images &&
-          images.map((value, index) => (
-            <CarouselItem key={index}>
-              {value.url && (
-                <ImageWithSkeleton2
-                  src={value.url.split("--")[0]}
-                  alt=""
-                  className="w-full object-cover rounded-t-lg "
-                />
-              )}
-            </CarouselItem>
-          ))}
-      </CarouselContent>
-      <CarouselPrevious
-        position={position}
-        setPosition={setPosition}
-        className="ml-3"
-      />
-      <CarouselNext
-        position={position}
-        setPosition={setPosition}
-        className="mr-3"
-      />
-    </Carousel>
+    <div>
+      {!displayZoom ? (
+        <Carousel className={className}>
+          <CarouselContent
+            onClick={() => {
+              setDisplayZoom(true);
+              console.log(displayZoom);
+            }}
+          >
+            {images &&
+              images.map((value, index) => (
+                <CarouselItem key={index}>
+                  {value.url && (
+                    <ImageWithSkeleton2
+                      src={value.url.split("--")[0]}
+                      alt=""
+                      className="w-full object-cover rounded-t-lg "
+                    />
+                  )}
+                </CarouselItem>
+              ))}
+          </CarouselContent>
+          <CarouselPrevious
+            position={position}
+            setPosition={setPosition}
+            className="ml-3"
+          />
+          <CarouselNext
+            position={position}
+            setPosition={setPosition}
+            className="mr-3"
+          />
+        </Carousel>
+      ) : (
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className=" drop-shadow-2xl bg-white fixed top-0 left-0 w-screen h-screen  z-3000000000000"
+        >
+          <Carousel className={className + ""}>
+            <div
+              className="fixed right-2 top-5 p-2 bg-white/25 rounded-sm z-500000000000 "
+              onClick={() => setDisplayZoom(false)}
+            >
+              <ZoomIcon width={30} height={30} color="black" />
+            </div>
+
+            <CarouselContent>
+              {images &&
+                images.map((value, index) => (
+                  <CarouselItem key={index}>
+                    {value.url && (
+                      <ImageWithSkeleton5
+                        src={value.url.split("--")[0]}
+                        alt=""
+                        className="w-full h-full object-cover rounded-t-lg "
+                      />
+                    )}
+                  </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious
+              position={position}
+              setPosition={setPosition}
+              className="ml-3"
+            />
+            <CarouselNext
+              position={position}
+              setPosition={setPosition}
+              className="mr-3"
+            />
+          </Carousel>
+        </motion.div>
+      )}
+    </div>
   );
 }
 

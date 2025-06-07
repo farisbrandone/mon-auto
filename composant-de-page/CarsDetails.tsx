@@ -145,7 +145,7 @@ function CarsDetails() {
               {/*  </div> */}
             </div>
             <ImageCaroussel2
-              className="w-full max-w-7xl rounded-lg mt-3 p-2 "
+              className="w-full max-w-7xl rounded-lg mt-3 p-2 transition-all duration-500 "
               position={position}
               setPosition={setPosition}
               imagesAuto={auto._links.imagesAuto.href}
