@@ -363,8 +363,8 @@ function CarsDetails() {
                 className="flex flex-col gap-2 w-full p-1.5 rounded-md"
                 onSubmit={handleSubmit(onSubmit)}
               >
-                <div className=" flex flex-col sm:grid sm:grid-cols-2 w-full gap-2">
-                  <div className="flex flex-col gap-5">
+                <div className=" flex flex-col lg:grid lg:grid-rows-2 w-full gap-2">
+                  <div className="flex flex-col lg:flex-row gap-5">
                     <div className="flex flex-col gap-1">
                       <Label>Nom</Label>
                       <Input
@@ -379,22 +379,6 @@ function CarsDetails() {
                       )}
                     </div>
                     <div className="flex flex-col gap-1">
-                      <Label>Email</Label>
-                      <Input
-                        type="email"
-                        className="border-[1px] border-solid border-[#33333327] rounded-sm "
-                        {...register("email")}
-                      />
-                      {errors.email && (
-                        <p className="mt-1 text-sm text-red-600">
-                          {errors.email.message}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-5">
-                    <div className="flex flex-col gap-1">
                       <Label>Prenom</Label>
                       <Input
                         type="text"
@@ -404,6 +388,22 @@ function CarsDetails() {
                       {errors.prenom && (
                         <p className="mt-1 text-sm text-red-600">
                           {errors.prenom.message}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col lg:flex-row gap-5">
+                    <div className="flex flex-col gap-1">
+                      <Label>Email</Label>
+                      <Input
+                        type="email"
+                        className="border-[1px] border-solid border-[#33333327] rounded-sm "
+                        {...register("email")}
+                      />
+                      {errors.email && (
+                        <p className="mt-1 text-sm text-red-600">
+                          {errors.email.message}
                         </p>
                       )}
                     </div>
@@ -422,6 +422,70 @@ function CarsDetails() {
                     </div>
                   </div>
                 </div>
+
+                {/* 
+                
+                  <div className="flex flex-col sm:flex-row gap-5">
+                                <div className="flex flex-col gap-1">
+                                  <Label>Nom</Label>
+                                  <Input
+                                    type="text"
+                                    className="border-[1px] border-solid border-[#33333327] rounded-sm "
+                                    {...register("nom")}
+                                  />
+                                  {errors.nom && (
+                                    <p className="mt-1 text-sm text-red-600">
+                                      {errors.nom.message}
+                                    </p>
+                                  )}
+                                </div>
+                                <div className="flex flex-col gap-1">
+                                  <Label>Prenom</Label>
+                                  <Input
+                                    type="text"
+                                    className="border-[1px] border-solid border-[#33333327] rounded-sm "
+                                    {...register("prenom")}
+                                  />
+                                  {errors.prenom && (
+                                    <p className="mt-1 text-sm text-red-600">
+                                      {errors.prenom.message}
+                                    </p>
+                                  )}
+                                </div>
+                              </div>
+                
+                              <div className="flex flex-col sm:flex-row gap-5">
+                                <div className="flex flex-col gap-1">
+                                  <Label>Email</Label>
+                                  <Input
+                                    type="email"
+                                    className="border-[1px] border-solid border-[#33333327] rounded-sm "
+                                    {...register("email")}
+                                  />
+                                  {errors.email && (
+                                    <p className="mt-1 text-sm text-red-600">
+                                      {errors.email.message}
+                                    </p>
+                                  )}
+                                </div>
+                                <div className="flex flex-col gap-1">
+                                  <Label>Telephone</Label>
+                                  <Input
+                                    type="text"
+                                    className="border-[1px] border-solid border-[#33333327] rounded-sm "
+                                    {...register("telephone")}
+                                  />
+                                  {errors.telephone && (
+                                    <p className="mt-1 text-sm text-red-600">
+                                      {errors.telephone.message}
+                                    </p>
+                                  )}
+                                </div>
+                              </div>
+                
+                
+                
+                */}
 
                 <div className="flex flex-col gap-1">
                   <Label>Message</Label>

@@ -39,8 +39,8 @@ function HeaderCars() {
           {/*  <Hamburger width={30} height={30} color="white" /> */}
         </div>
       </div>
-      <div className="fixed top-[20px] right-0 w-screen   lg:hidden bodyBurger">
-        <input className="burger-check" id="burger-check" type="checkbox" />
+      <div className="fixed top-[20px] right-0  w-screen   lg:hidden bodyBurger">
+        <input className="burger-check p-2" id="burger-check" type="checkbox" />
         <label htmlFor="burger-check" className="burger"></label>
         <nav
           id="navigation1"
