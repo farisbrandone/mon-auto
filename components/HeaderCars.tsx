@@ -40,8 +40,12 @@ function HeaderCars() {
         </div>
       </div>
       <div className="fixed top-[20px] right-0  w-screen   lg:hidden bodyBurger">
-        <input className="burger-check p-2" id="burger-check" type="checkbox" />
-        <label htmlFor="burger-check" className="burger"></label>
+        <input
+          className="burger-check p-2 "
+          id="burger-check"
+          type="checkbox"
+        />
+        <label htmlFor="burger-check" className="burger mr-2"></label>
         <nav
           id="navigation1"
           className="navigation bg-white rounded-sm text-black text-start px-2 border-1 border-solid border-[#333333] "

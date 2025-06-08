@@ -218,7 +218,7 @@ function CarsPage() {
         {(loading || lolo) && (
           <>
             <div className="flex justify-center items-center py-8 col-span-2 xl:col-span-3 2xl:col-span-4 ">
-              <LoadingComponent />
+              {/*   <LoadingComponent /> */}
             </div>
           </>
         )}
