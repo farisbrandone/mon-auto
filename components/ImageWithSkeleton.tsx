@@ -390,7 +390,7 @@ const ImageWithSkeleton5: React.FC<ImageWithSkeletonProps> = ({
         <img
           src={src}
           alt={alt}
-          className="w-full h-[95vh] sm:h-[60%] sm:mb-2 object-cover block rounded-md "
+          className="w-full h-[95vh] sm:h-[60%] sm:mb-2 object-contain block rounded-md "
           /*  style={{
             width: "100%",
             height: "100%",

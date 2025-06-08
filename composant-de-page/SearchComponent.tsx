@@ -722,14 +722,14 @@ function SearchComponent1() {
                     model: {formatDate(val.anneeDeFabrication)} {val.marques}{" "}
                     {val.model}
                   </p>
-                  <div className="flex flex-col gap-3 w-full p-2">
-                    <div className="grid grid-cols-2 w-full">
-                      <p className="font-[800]"> Kilometrage : </p>
-                      <p className=" w-full">
-                        {" "}
-                        {formatMoney(val.kilometrage)} {val.kilometrageUnit}
-                      </p>
-                    </div>
+                  <div className="flex flex-col gap-3 w-full p-2 ">
+                    {/*   <div className="grid grid-cols-2 w-full">
+                                     <p className="font-[800]"> Kilometrage : </p>
+                                     <p className=" w-full">
+                                       {" "}
+                                       {formatMoney(val.kilometrage)} {val.kilometrageUnit}
+                                     </p>
+                                   </div> */}
                     <div className="grid grid-cols-2 w-full">
                       <p className="font-[800]"> Moteur : </p>
                       <p className=" w-full">
@@ -737,15 +737,14 @@ function SearchComponent1() {
                       </p>
                     </div>
 
-                    <div className="grid grid-cols-2 w-full">
-                      <p className="font-[800]"> chaîne de traction : </p>
-                      <p className=" w-full">
-                        {" "}
-                        {mapBackTofrontTypeTrainConducteur(
-                          val.typeDeTrainConducteur
-                        )}
-                      </p>
-                    </div>
+                    {/*  <div className="grid grid-cols-2 w-full">
+                                     <p className="font-[800]"> chaîne de traction : </p>
+                                     <p className=" w-full">
+                                       {mapBackTofrontTypeTrainConducteur(
+                                         val.typeDeTrainConducteur
+                                       )}
+                                     </p>
+                                   </div> */}
                     <div className="grid grid-cols-2 w-full">
                       <p className="font-[800]"> Type de carburant : </p>
                       <p className=" w-full">
@@ -759,6 +758,11 @@ function SearchComponent1() {
                         {mapBackToFrontTypeTransmission(val.typeTransmission)}
                       </p>
                     </div>
+                    <div className="grid grid-cols-2 w-full">
+                      <p className="font-[800]">Climatisation </p>
+                      <p className=" w-full">{val.climatisation}</p>
+                    </div>
+
                     <div className="grid grid-cols-2 w-full">
                       <p className="font-[800]"> Ville : </p>
                       <p className=" w-full"> {val.villeDuBien} </p>
