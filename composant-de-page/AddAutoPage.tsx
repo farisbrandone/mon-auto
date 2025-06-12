@@ -41,6 +41,7 @@ import { CrossIcon, LoaderCircleIcon } from "lucide-react";
 import DeleteImageMultiple from "@/components/DeleteImageMultiple";
 import HeaderCars from "@/components/HeaderCars";
 import LoadingComponent from "@/components/LoadingComponent";
+import Link from "next/link";
 
 export interface UploadProgress {
   fileName: string;
@@ -559,14 +560,14 @@ export default function AddAutoPage() {
   }
 
   return (
-    <div className="relative max-w-2xl mx-auto  my-10 mb-0 p-6 bg-white font-playfair">
+    <div className="relative box-border max-w-2xl mx-auto  my-10 mb-0 p-3 bg-white font-playfair">
       <HeaderCars />
       <ScrollToTopButton />
       <motion.div
         initial={{ opacity: 0, y: 60 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className=" mx-auto bg-white p-5 rounded-lg loginShaddow mt-8 sm:mt-12"
+        className=" mx-auto bg-white p-5 rounded-lg loginShaddow mt-8 sm:mt-12 mb-5"
       >
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 ">
           {/* Spécialisations */}
@@ -1403,8 +1404,20 @@ export default function AddAutoPage() {
                 J'accepte les conditions générales d'utilisation *
               </label>
               <p className="text-gray-500">
-                En cochant cette case, vous acceptez nos conditions générales et
-                notre politique de confidentialité.
+                En cochant cette case, vous acceptez nos{" "}
+                <Link href="/terms" className="inline text-blue-500 underline ">
+                  {" "}
+                  conditions générales
+                </Link>{" "}
+                et notre{" "}
+                <Link
+                  href="/privacy-policy"
+                  className="inline text-blue-500 underline"
+                >
+                  {" "}
+                  politique de confidentialité
+                </Link>{" "}
+                .
               </p>
               {errors.acceptsTerms && (
                 <p className="mt-1 text-sm text-red-600">
@@ -1437,11 +1450,11 @@ export default function AddAutoPage() {
           </button>
         </div>
       </motion.div>
-      <div className="copyright absolute bottom-0 w-full text-center ">
-        <p className="">
+      {/*    <div className="absolute bottom-0 w-full text-center text-wrap ">
+        <p className="w-full text-wrap">
           &copy; PAMOD TECHNOLOGIE , All Right Reserved {currentYear}
         </p>
-      </div>
+      </div> */}
     </div>
   );
 }
