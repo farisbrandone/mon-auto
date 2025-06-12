@@ -42,7 +42,7 @@ const PrivacyPolicy: NextPage = () => {
         <p className="text-gray-700">
           Vous pouvez demander l&apos;accès, la modification ou la suppression
           de vos données via{" "}
-          <Link href="/contact" className="text-blue-600 hover:underline">
+          <Link href="/send-message" className="text-blue-600 hover:underline">
             notre formulaire de contact
           </Link>
           .

@@ -7,25 +7,26 @@ const LegalNotice: NextPage = () => {
 
       <div className="space-y-4 text-gray-700">
         <p>
-          <strong>Éditeur :</strong> Société XYZ, immatriculée au RCS de Paris
-          sous le numéro 123 456 789.
+          <strong>Éditeur :</strong> Société PAMOD TECHNOLOGIE,{" "}
+          {/* immatriculée au RCS de Paris
+          sous le numéro 123 456 789. */}
         </p>
         <p>
-          <strong>Siège social :</strong> 123 Rue de l&apos;Exemple, 75000 Paris
+          <strong>Siège social :</strong>Logbaba Douala, Rue saint thomas
         </p>
-        <p>
+        {/*  <p>
           <strong>Directeur de publication :</strong> John Doe
-        </p>
+        </p> */}
         <p>
           <strong>Hébergeur :</strong> Vercel Inc., San Francisco.
         </p>
         <p>
           <strong>Contact :</strong>{" "}
           <a
-            href="mailto:legal@example.com"
+            href="mailto:f.pamod@outlook.com"
             className="text-blue-600 hover:underline"
           >
-            legal@example.com
+            f.pamod@outlook.com
           </a>
         </p>
       </div>
