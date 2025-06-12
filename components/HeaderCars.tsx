@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 import { Message } from "./icon/Message";
 import { DropdownMenuDemo } from "./ButtonHamburger";
@@ -11,6 +11,16 @@ import Image from "next/image";
 
 function HeaderCars() {
   const router = useRouter();
+  const [check, setCheck] = useState(false);
+
+  const handleCheck = () => {
+    if (check) {
+      setCheck(false);
+    } else {
+      setCheck(true);
+    }
+  };
+
   return (
     <div className=" fixed top-0 left-0 h-[80px]  z-10000 font-playfair flex items-center justify-between w-screen bg-[#333333]  px-4  sm:py-2 text-white">
       <p className=" text-[25px] sm:text-3xl select-none">Auto-Occaz.com</p>
@@ -44,6 +54,8 @@ function HeaderCars() {
           className="burger-check p-2 "
           id="burger-check"
           type="checkbox"
+          checked={check}
+          onChange={handleCheck}
         />
         <label htmlFor="burger-check" className="burger mr-2"></label>
         <nav
@@ -53,7 +65,10 @@ function HeaderCars() {
           <ul className="headerUl flex flex-col gap-3">
             <li
               className="headerLi pl-5 p-3 flex items-center bg-[#333333] text-white mt-2 rounded-sm cursor-pointer "
-              onClick={() => router.push("/add-auto")}
+              onClick={() => {
+                router.push("/add-auto");
+                setCheck(false);
+              }}
             >
               <p className="headerA flex items-center    ">
                 <Plus className="mr-1" />
@@ -62,7 +77,10 @@ function HeaderCars() {
             </li>
             <li
               className="headerLi p-3 flex items-center bg-[#333333] text-white rounded-sm mb-2 cursor-pointer"
-              onClick={() => router.push("/send-message")}
+              onClick={() => {
+                router.push("/send-message");
+                setCheck(false);
+              }}
             >
               <p className="headerA flex items-center gap-1  cursor-pointer">
                 <Message width={25} height={25} color="#fff" />
