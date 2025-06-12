@@ -1,8 +1,4 @@
 import React from "react";
-import { Localisation } from "./icon/Localisation";
-import { Telephone } from "./icon/Telephone";
-import { Email } from "./icon/Email";
-import FooterCond from "./politiqueConfid/FooterCond";
 
 /* function Footer() {
   return (
@@ -75,6 +71,7 @@ export default function Footer() {
             <a href="/legal-notice"> Mentions légales</a>
             <a href="/contact">Contact</a>
             <a href="/cookies"> Cookies</a>
+            <a href="/terms"> Conditions d&apos;utilisation</a>
           </div>
         </div>
         <div className="socials">
