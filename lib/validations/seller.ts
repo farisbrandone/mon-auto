@@ -80,10 +80,7 @@ export const SellerSchema = z.object({
   typeTransmission: z
     .string(z.enum(TRANSMISSION_TYPES))
     .min(1, "Sélectionnez au moins un type de transmission"),
-  typeDeTrainConducteur: z
-    .string(z.enum(TYPE_TRAIN_CONDUCTEUR))
-    .min(1, "Sélectionnez au moins un type de transmission")
-    .optional(),
+  typeDeTrainConducteur: z.string(z.enum(TYPE_TRAIN_CONDUCTEUR)).optional(),
   typeMoteur: z
     .string(z.enum(TYPES_MOTEUR))
     .min(1, "Sélectionnez au moins un type de transmission"),
@@ -97,24 +94,25 @@ export const SellerSchema = z.object({
     .min(8, "Le status doit contenir au moins 8 caractères")
     .max(11, "Le status doit contenir au plus 11 caractères")
     .default("ACTIVATE"),
-  immatriculation: z
-    .string()
-    .min(2, "Le numéro d'immatriculation doit contenir au moins 2 caractères")
-    .optional(),
+  immatriculation: z.string().default("").optional(),
   prix: z
     .number()
     .min(0, "Le prix ne doit pas etre un nombre et doit etre supérieur à zero"),
   conso100kmVille: z
     .number()
     .min(0, "Le prix ne doit pas etre un nombre et doit etre supérieur à zero")
+    .default(0.0)
     .optional(),
+
   conso100kmAutoRoute: z
     .number()
     .min(0, "Le prix ne doit pas etre un nombre et doit etre supérieur à zero")
+    .default(0.0)
     .optional(),
   tailleDuMoteur: z
     .number()
     .min(0, "Le prix ne doit pas etre un nombre et doit etre supérieur à zero")
+    .default(0.0)
     .optional(),
 
   devise: z.enum(CURRENCIES),
@@ -123,8 +121,7 @@ export const SellerSchema = z.object({
     .max(
       new Date(),
       "La date de fabrication doit etre inférieur à la date actuelle"
-    )
-    .optional(),
+    ),
   kilometrage: z
     .number()
     .min(0, "Le kilométrage doit etre supérieur à zero et doit etre un nombre"),

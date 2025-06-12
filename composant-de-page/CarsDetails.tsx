@@ -228,7 +228,7 @@ function CarsDetails() {
                       {" "}
                       <strong>Taille du moteur:</strong>{" "}
                     </p>
-                    <p>{auto.tailleDuMoteur}L </p>
+                    <p>{!!auto.tailleDuMoteur && auto.tailleDuMoteur + "L"} </p>
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <p>
@@ -305,8 +305,8 @@ function CarsDetails() {
                       <strong>Conso autoroute:</strong>{" "}
                     </p>
                     <p>
-                      {auto.conso100kmAutoRoute}
-                      {"L"}/100KM
+                      {!!auto.conso100kmAutoRoute && auto.conso100kmAutoRoute}
+                      {!!auto.conso100kmAutoRoute && "L/100KM"}
                     </p>
                   </div>
                   <div className="grid grid-cols-2 gap-3">
@@ -315,8 +315,8 @@ function CarsDetails() {
                       <strong>Conso ville:</strong>{" "}
                     </p>
                     <p>
-                      {auto.conso100kmVille}
-                      {"L"}/100KM
+                      {!!auto.conso100kmVille && auto.conso100kmVille}
+                      {!!auto.conso100kmVille && "L/100KM"}
                     </p>
                   </div>
                   <div className="grid grid-cols-2 gap-3">

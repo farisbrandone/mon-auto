@@ -65,7 +65,11 @@ export default function AddAutoPage() {
     reset,
   } = useForm<SellerFormData>({
     resolver: zodResolver(SellerSchema),
-    defaultValues: {},
+    defaultValues: {
+      conso100kmVille: 0.0,
+      conso100kmAutoRoute: 0.0,
+      tailleDuMoteur: 0.0,
+    },
   });
 
   console.log(errors);
@@ -276,30 +280,32 @@ export default function AddAutoPage() {
       );
       formData.set(
         "kilometrage",
-        data.kilometrage ? data.kilometrage.toString() : ""
+        data.kilometrage ? data.kilometrage.toString() : "0.0"
       );
       formData.set(
         "kilometrageUnit",
-        data.kilometrageUnit ? data.kilometrageUnit : ""
+        data.kilometrageUnit ? data.kilometrageUnit : "km"
       );
       formData.set(
         "typeDeTrainConducteur",
-        data.typeDeTrainConducteur ? data.typeDeTrainConducteur : ""
+        data.typeDeTrainConducteur
+          ? data.typeDeTrainConducteur
+          : "Traction avant (FWD)"
       );
 
       formData.set(
         "conso100kmAutoRoute",
-        data.conso100kmAutoRoute ? data.conso100kmAutoRoute.toString() : ""
+        data.conso100kmAutoRoute ? data.conso100kmAutoRoute.toString() : "0.0"
       );
 
       formData.set(
         "conso100kmVille",
-        data.conso100kmVille ? data.conso100kmVille.toString() : ""
+        data.conso100kmVille ? data.conso100kmVille.toString() : "0.0"
       );
 
       formData.set(
         "tailleDuMoteur",
-        data.tailleDuMoteur ? data.tailleDuMoteur.toString() : ""
+        data.tailleDuMoteur ? data.tailleDuMoteur.toString() : "0.0"
       );
 
       formData.set("couleurInt", data.couleurInt ? data.couleurInt : "");
@@ -331,7 +337,7 @@ export default function AddAutoPage() {
       );
       formData.set(
         "immatriculation",
-        data.immatriculation ? data.immatriculation : ""
+        data.immatriculation ? data.immatriculation : "none"
       );
       formData.set(
         "descriptionAuto",
@@ -525,20 +531,23 @@ export default function AddAutoPage() {
       try {
         const result = await refreshToken(token);
         console.log({ result });
-        /* 
-         const val = JSON.stringify(response.token);
-          localStorage.setItem("mon-auto-token", val);
-        */
+
+        const val = JSON.stringify(result);
+        localStorage.setItem("mon-auto-token", val);
+
         setDisplay(true);
       } catch (error) {
         console.log(error);
         setDisplay(false);
-        //window.location.replace("/seller-login");
+        window.location.replace("/seller-login");
       }
     };
     if (!localStorage.getItem("mon-auto-token")) {
       setDisplay(false);
       window.location.replace("/seller-signup");
+      return;
+    } else {
+      setDisplay(true);
       return;
     }
     const token = JSON.parse(localStorage.getItem("mon-auto-token") as string);
@@ -562,16 +571,21 @@ export default function AddAutoPage() {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 ">
           {/* Spécialisations */}
           <div className="space-y-4 ">
-            <h2 className="text-[16px]  sm:text-[18px] font-semibold">
-              Insérer une auto
-            </h2>
+            <p>
+              <h2 className="text-[16px]  sm:text-[18px] font-semibold">
+                Insérer une auto
+              </h2>
+              <h5 className="text-[12px] font-normal ">
+                {"(*) Champ requis "}
+              </h5>
+            </p>
 
             <div className="text-sm">
               <label
                 htmlFor="mymarque"
                 className="block text-sm font-medium text-gray-700"
               >
-                Marque de l'auto
+                Marque de l'auto *
               </label>
               <select
                 id="mymarque"
@@ -609,7 +623,7 @@ export default function AddAutoPage() {
                 htmlFor="mymodels"
                 className="block text-sm font-medium text-gray-700"
               >
-                Model associé à la marque choisis
+                Model associé à la marque choisis *
               </label>
               <input
                 type="text"
@@ -630,7 +644,7 @@ export default function AddAutoPage() {
                 htmlFor="mytypescarrosserie"
                 className="block  font-medium text-gray-700"
               >
-                Type de carrosserie
+                Type de carrosserie *
               </label>
               <select
                 id="mytypescarrosserie"
@@ -689,7 +703,7 @@ export default function AddAutoPage() {
                 htmlFor="mytypescarburant"
                 className="block text-sm font-medium text-gray-700"
               >
-                Type de carburant
+                Type de carburant *
               </label>
               <select
                 id="mytypescarburant"
@@ -716,7 +730,7 @@ export default function AddAutoPage() {
                 htmlFor="typeTransmission"
                 className="block text-sm font-medium text-gray-700"
               >
-                Type de transmission
+                Type de transmission *
               </label>
               <select
                 id="typeTransmission"
@@ -742,7 +756,7 @@ export default function AddAutoPage() {
                 htmlFor="typeMoteur"
                 className="block text-sm font-medium text-gray-700"
               >
-                Type de moteur
+                Type de moteur *
               </label>
               <select
                 id="typeMoteur"
@@ -800,7 +814,7 @@ export default function AddAutoPage() {
                 htmlFor="couleurExt"
                 className="block text-sm font-medium text-gray-700"
               >
-                Ville ou se trouve le bien
+                Ville ou se trouve le bien *
               </label>
 
               <SelectCity
@@ -817,7 +831,7 @@ export default function AddAutoPage() {
                   htmlFor="price"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  À quel prix vendez-vous
+                  À quel prix vendez-vous *
                 </label>
                 <div className="mt-1 relative rounded-md shadow-sm">
                   <input
@@ -877,7 +891,7 @@ export default function AddAutoPage() {
                 htmlFor="registrationDate"
                 className="block text-sm font-medium text-gray-700"
               >
-                Date de première mise en circulation
+                Date de première mise en circulation *
               </label>
               <Controller
                 control={control}
@@ -908,7 +922,7 @@ export default function AddAutoPage() {
                 htmlFor="lastMaintenanceDate"
                 className="block text-sm font-medium text-gray-700"
               >
-                Date du dernier entretien
+                Date du dernier entretien *
               </label>
               <Controller
                 control={control}
@@ -1075,7 +1089,7 @@ export default function AddAutoPage() {
                 htmlFor="nbreDePlace"
                 className="block text-sm font-medium text-gray-700"
               >
-                nombre de place de l'auto
+                nombre de place de l'auto *
               </label>
               <input
                 type="number"
@@ -1099,7 +1113,7 @@ export default function AddAutoPage() {
                 htmlFor="nbreDePorte"
                 className="block text-sm font-medium text-gray-700"
               >
-                nombre de portière de l'auto
+                nombre de portière de l'auto *
               </label>
               <input
                 type="number"
@@ -1301,7 +1315,7 @@ export default function AddAutoPage() {
               htmlFor="climatisation"
               className="block text-sm font-medium text-gray-700"
             >
-              Climatisation
+              Climatisation *
             </label>
             <select
               id="climatisation"
@@ -1329,7 +1343,7 @@ export default function AddAutoPage() {
               htmlFor="imagesAuto"
               className="block text-sm font-medium text-gray-700"
             >
-              Insérer des Images du véhicules (max 8)
+              Insérer des Images du véhicules (max 8) *
             </label>
             <input
               id="imagesAuto"

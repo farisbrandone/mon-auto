@@ -51,23 +51,23 @@ function HeaderCars() {
           className="navigation bg-white rounded-sm text-black text-start px-2 border-1 border-solid border-[#333333] "
         >
           <ul className="headerUl flex flex-col gap-3">
-            <li className="headerLi pl-5 p-3 flex items-center bg-[#333333] text-white mt-2 rounded-sm ">
-              <a
-                href="/add-auto"
-                className="headerA flex items-center no-underline  "
-              >
+            <li
+              className="headerLi pl-5 p-3 flex items-center bg-[#333333] text-white mt-2 rounded-sm cursor-pointer "
+              onClick={() => router.push("/add-auto")}
+            >
+              <p className="headerA flex items-center    ">
                 <Plus className="mr-1" />
-                <p>Ajoute une auto</p>
-              </a>
+                <span>Ajoute une auto</span>
+              </p>
             </li>
-            <li className="headerLi p-3 flex items-center bg-[#333333] text-white rounded-sm mb-2">
-              <a
-                href="/send-message"
-                className="headerA flex items-center gap-1  cursor-pointer no-underline"
-              >
+            <li
+              className="headerLi p-3 flex items-center bg-[#333333] text-white rounded-sm mb-2 cursor-pointer"
+              onClick={() => router.push("/send-message")}
+            >
+              <p className="headerA flex items-center gap-1  cursor-pointer">
                 <Message width={25} height={25} color="#fff" />
-                <p className="">Nous contacter</p>
-              </a>
+                <span className="">Nous contacter</span>
+              </p>
             </li>
           </ul>
         </nav>
