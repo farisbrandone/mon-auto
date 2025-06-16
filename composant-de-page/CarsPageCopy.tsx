@@ -21,6 +21,7 @@ import ScrollToTopButton from "@/components/ScrollToTopButton";
 import LoadingComponent from "@/components/LoadingComponent";
 import ImageWithSkeleton from "@/components/ImageWithSkeleton";
 import SearchComponent from "@/components/SearchComponent";
+import { Spinner } from "@/components/ui/Spinner";
 
 export interface SearchCriteria {
   marques?: string;
@@ -44,7 +45,8 @@ function CarsPageCopy() {
   const [position, setPosition] = useState(0);
   const [lolo, setLolo] = useState(true);
 
-  const { autos, loading, hasMore, fetchMore } = useInfiniteAutos();
+  const { autos, loading, hasMore, fetchMore, firstLoading } =
+    useInfiniteAutos();
   const observer = useRef<IntersectionObserver>(null);
 
   const lastCarElementRef = useCallback(
@@ -54,6 +56,7 @@ function CarsPageCopy() {
 
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore) {
+          setLolo(false);
           fetchMore();
         }
       });
@@ -64,8 +67,21 @@ function CarsPageCopy() {
   );
 
   useEffect(() => {
-    setLolo(false);
+    /*  console.log({ loading });
+    if (!loading) {
+      setLolo(false);
+    } */
   }, []);
+
+  if (firstLoading && lolo) {
+    return (
+      <>
+        <div className="flex justify-center items-center py-8 col-span-2 xl:col-span-3 2xl:col-span-4 ">
+          <LoadingComponent />
+        </div>
+      </>
+    );
+  }
 
   return (
     <div className="text-black text-[16px] min-h-screen flex flex-col ">
@@ -152,13 +168,13 @@ function CarsPageCopy() {
                     <div className="flex items-center">
                       <Localisation color="#d14141" />
                       <p className="ml-1 hover:text-red-600  cursor-pointer ">
-                        MonAuto.com
+                        auto-occaz.com
                       </p>{" "}
                     </div>
                     <div className="flex items-center">
                       <Telephone color="#d14141" />
                       <p className="ml-1  hover:text-red-600 cursor-pointer">
-                        Tel: 655968956
+                        Tel: 650089683
                       </p>
                     </div>
                   </div>
@@ -166,10 +182,10 @@ function CarsPageCopy() {
               </div>
             );
           })}
-        {(loading || lolo) && (
+        {loading && hasMore && !lolo && (
           <>
             <div className="flex justify-center items-center py-8 col-span-2 xl:col-span-3 2xl:col-span-4 ">
-              <LoadingComponent />
+              <Spinner width={40} height={40} color="#333333" />
             </div>
           </>
         )}

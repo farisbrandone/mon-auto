@@ -7,6 +7,7 @@ export const useInfiniteAutos = () => {
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+  const [firstLoading, setFirstLoading] = useState(true);
 
   const fetchAutos = useCallback(async () => {
     if (loading || !hasMore) return;
@@ -24,6 +25,7 @@ export const useInfiniteAutos = () => {
       console.error("Error fetching Autos:", error);
     } finally {
       setLoading(false);
+      setFirstLoading(false);
     }
     console.log({ hasMore });
   }, [page, loading, hasMore]);
@@ -32,5 +34,5 @@ export const useInfiniteAutos = () => {
     fetchAutos();
   }, []);
 
-  return { autos, loading, hasMore, fetchMore: fetchAutos };
+  return { autos, loading, hasMore, fetchMore: fetchAutos, firstLoading };
 };

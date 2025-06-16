@@ -13,9 +13,9 @@ export function CardDescription({
         <CardTitle className="text-[18px] "> Description de l'auto</CardTitle>
         {/*  <CardDescription>Deploy your new project in one-click.</CardDescription> */}
       </CardHeader>
-      <CardContent className="text-wrap pb-2 font-bold">
+      <CardContent className="text-wrap pb-2 font-bold ">
         {" "}
-        <pre>{descriptionAuto}</pre>{" "}
+        <pre className="text-wrap">{descriptionAuto}</pre>{" "}
       </CardContent>
     </Card>
   );

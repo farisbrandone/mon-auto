@@ -45,7 +45,7 @@ export function ImageCaroussel({
       try {
         setLoading(true);
         const imagesUrl = await axios.get(imagesAuto);
-        console.log({ zizi: imagesUrl.data._embedded.imageAutos });
+
         setImages(imagesUrl.data._embedded.imageAutos);
         setLoading(false);
       } catch (error) {
@@ -102,7 +102,7 @@ export function ImageCaroussel2({
     const getImagesAuto = async () => {
       try {
         const imagesUrl = await axios.get(imagesAuto);
-        console.log({ zizi: imagesUrl.data._embedded.imageAutos });
+
         setImages(imagesUrl.data._embedded.imageAutos);
       } catch (error) {
         console.log(error);
@@ -118,7 +118,6 @@ export function ImageCaroussel2({
           <CarouselContent
             onClick={() => {
               setDisplayZoom(true);
-              console.log(displayZoom);
             }}
           >
             {images &&

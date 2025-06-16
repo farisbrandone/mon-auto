@@ -138,7 +138,6 @@ export async function registerSeller(formData: FormData) {
                 token: response.data,
               };
             } else {
-              console.log("zouzou");
             }
           } catch (error) {
             console.log(error);

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { CarIcon } from "./icon/CarIcon";
 
 export default function LoadingComponent() {
   return (
@@ -26,8 +27,9 @@ export default function LoadingComponent() {
           </linearGradient>
         </defs>
       </svg>
-      <p className="loading-text text-black text-[20px] sm:text-[40px] mt-[-20px]">
-        Chargement...
+      <p className="loading-text text-black text-[20px] flex items-center gap-2 sm:text-[40px] mt-[-20px]">
+        <CarIcon width={30} height={30} /> <span>Chargement... </span>{" "}
+        <CarIcon width={30} height={30} />
       </p>
     </div>
   );

@@ -7,6 +7,7 @@ import HeaderCars from "@/components/HeaderCars";
 import { DoubleBack } from "@/components/icon/DoubleBack";
 import { Email } from "@/components/icon/Email";
 import { Previous } from "@/components/icon/Previous";
+import { FaWhatsapp } from "@/components/icon/WhatsappIcon";
 import {
   ImageCaroussel,
   ImageCaroussel2,
@@ -32,7 +33,6 @@ import {
 import { contactForm, contactSchema } from "@/lib/validations/seller";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
-import clsx from "clsx";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -48,6 +48,14 @@ function CarsDetails() {
   const [disableAfterSend, setDisableAfterSend] = useState(false);
 
   const { slug } = useParams();
+  const whatsappMessage = `Code auto chosit: ${auto && auto.id} - marque: ${
+    auto && auto.marques
+  } - model: ${auto && auto.model} image: ${images && images[0]}`;
+  const whatsappNumber = "+237655968956";
+  // Formatte le numéro et encode le message pour l'URL
+  const formattedWhatsappNumber = whatsappNumber.replace(/[\s\-\(\)]/g, "");
+  const encodedMessage = encodeURIComponent(whatsappMessage);
+  const whatsappUrl = `https://wa.me/${formattedWhatsappNumber}?text=${encodedMessage}`;
 
   const {
     register,
@@ -109,11 +117,14 @@ function CarsDetails() {
 
   return (
     <div className="relative text-black text-[14px] sm:text-[16px] min-h-screen flex flex-col font-playfair  ">
+      <Link href={whatsappUrl} className="whatsapp-float" target="_blank">
+        <FaWhatsapp />
+      </Link>
       <HeaderCars />
       <ScrollToTopButton />
       <Link
         href="/cars"
-        className="flex items-center  cursor-pointer pl-2 w-[250px] mt-[100px] "
+        className="flex items-center  cursor-pointer pl-2 w-[250px] mt-[110px] sm:mt-[150px] "
       >
         <div className="p-2 bg-[#333333] flex items-center rounded-sm ">
           <Previous color="white" />

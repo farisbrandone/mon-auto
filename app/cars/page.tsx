@@ -8,13 +8,13 @@ function page() {
   return (
     <div className="font-sans">
       <CarsPageCopy />
-      <Link
+      {/*   <Link
         href="https://wa.me/237655968956"
         className="whatsapp-float"
         target="_blank"
       >
         <FaWhatsapp />
-      </Link>
+      </Link> */}
     </div>
   );
 }

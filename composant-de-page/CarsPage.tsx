@@ -67,7 +67,7 @@ function CarsPage() {
   const { autos, loading, hasMore, fetchMore } = useInfiniteAutos();
   const observer = useRef<IntersectionObserver>(null);
 
-  const lastCarElementRef = useCallback(
+  /*  const lastCarElementRef = useCallback(
     (node: HTMLDivElement) => {
       if (loading) return;
       if (observer.current) observer.current.disconnect();
@@ -81,23 +81,35 @@ function CarsPage() {
       if (node) observer.current.observe(node);
     },
     [loading, hasMore]
-  );
+  ); */
 
   useEffect(() => {
-    setLolo(false);
-  }, []);
+    if (loading) {
+      setLolo(false);
+    }
+  }, [loading]);
+
+  if (loading) {
+    return (
+      <>
+        <div className="flex justify-center items-center py-8 col-span-2 xl:col-span-3 2xl:col-span-4 ">
+          <LoadingComponent />
+        </div>
+      </>
+    );
+  }
 
   return (
     <div className="text-black text-[16px] min-h-screen flex flex-col ">
       <HeaderCars />
       <ScrollToTopButton />
-      <div className="relative w-full mt-[100px] ">
+      <div className="relative w-full mt-[100px] p-2 ">
         <ImageWithSkeleton4
           src="/auth-image.jpg"
           alt=""
           className=" w-full h-full  flex"
         />
-        <div className="absolute w-full top-0 left-0 h-[100%] bg-black/20 z-30  "></div>
+        <div className="absolute w-[calc(100%_-_8px)] top-1 left-1 h-[calc(100%_-_8px)] bg-black/20 z-30 rounded-lg  "></div>
         <div className="top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] w-full absolute flex flex-col  font-[600]  text-[#fffafa] text-[16px] sm:text-[20px] z-40 ">
           <div className="self-center max-sm:ml-5">
             <p className=" text-xl sm:text-3xl select-none font-[900]">
@@ -121,13 +133,15 @@ function CarsPage() {
       </div>
 
       <SearchComponent />
-      <p className="ml-2 font-bold">Parcoure les autos les plus visitées</p>
+      <p className="ml-2 font-normal text-red-500 mb-2 mt-2 underline">
+        Parcoure les autos les plus visitées
+      </p>
       <div className="flex flex-col sm:grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 w-full gap-4 mb-3.5 p-2">
         {autos &&
           autos?.map((val, index) => {
             return (
               <div
-                ref={index === autos.length - 1 ? lastCarElementRef : null}
+                /*  ref={index === autos.length - 1 ? lastCarElementRef : null} */
                 className=" p-1 flex flex-col items-center max-w-xl   border-[1px] border-[#00000021] border-solid  rounded-lg cardDetailShadow"
               >
                 <ImageCaroussel
@@ -201,13 +215,13 @@ function CarsPage() {
                     <div className="flex items-center">
                       <Localisation color="#d14141" />
                       <p className="ml-1 hover:text-red-600  cursor-pointer ">
-                        Auto-Occaz.com
+                        auto-occaz.com
                       </p>{" "}
                     </div>
                     <div className="flex items-center">
                       <Telephone color="#d14141" />
                       <p className="ml-1  hover:text-red-600 cursor-pointer">
-                        Tel: 655968956
+                        Tel: 650089683
                       </p>
                     </div>
                   </div>
