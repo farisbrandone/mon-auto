@@ -103,7 +103,7 @@ function CarsPage() {
     <div className="text-black text-[16px] min-h-screen flex flex-col ">
       <HeaderCars />
       <ScrollToTopButton />
-      <div className="relative w-full mt-[100px] p-2 ">
+      <div className="relative w-full mt-[110px]  sm:mt-[150px] p-2 ">
         <ImageWithSkeleton4
           src="/auth-image.jpg"
           alt=""

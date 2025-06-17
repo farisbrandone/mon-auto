@@ -48,6 +48,8 @@ export const TYPES_CARROSSERIE = [
   "SUV",
   "Hayon",
   "Fourgon",
+  "Citadine",
+  "Compacte à hayon",
   // Ajoutez d'autres types...
 ] as const;
 

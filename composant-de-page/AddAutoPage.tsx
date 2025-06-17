@@ -567,7 +567,7 @@ export default function AddAutoPage() {
         initial={{ opacity: 0, y: 60 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className=" mx-auto bg-white p-5 rounded-lg loginShaddow mt-8 sm:mt-12 mb-5"
+        className=" mx-auto bg-white p-5 rounded-lg loginShaddow mt-14 sm:mt-[100px] mb-5"
       >
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 ">
           {/* Spécialisations */}

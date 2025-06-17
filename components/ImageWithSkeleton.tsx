@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 interface ImageWithSkeletonProps {
   src: string;
@@ -231,14 +231,23 @@ const ImageWithSkeleton4: React.FC<ImageWithSkeletonProps> = ({
 }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-
+  const imgRef = useRef<HTMLImageElement | null>(null);
   useEffect(() => {
     const image = new Image();
+    imgRef.current = image;
     image.src = src;
 
     image.onload = () => {
       setIsLoading(false);
       setHasError(false);
+    };
+    const handleLoad = () => {
+      setIsLoading(false);
+      setHasError(false);
+    };
+    const handleError = () => {
+      setIsLoading(false);
+      setHasError(true);
     };
 
     image.onerror = () => {
@@ -246,9 +255,15 @@ const ImageWithSkeleton4: React.FC<ImageWithSkeletonProps> = ({
       setHasError(true);
     };
 
+    image.addEventListener("load", handleLoad);
+    image.addEventListener("error", handleError);
+
     return () => {
       image.onload = null;
       image.onerror = null;
+      image.removeEventListener("load", handleLoad);
+      image.removeEventListener("error", handleError);
+      imgRef.current = null;
     };
   }, [src]);
 
@@ -265,11 +280,8 @@ const ImageWithSkeleton4: React.FC<ImageWithSkeletonProps> = ({
       {isLoading && (
         <div
           style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
+            width: "99vw",
+            height: "250px",
             background:
               "linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%)",
             backgroundSize: "200% 100%",
