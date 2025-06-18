@@ -14,7 +14,9 @@ export const useInfiniteAutos = () => {
 
     setLoading(true);
     try {
-      const response = await fetch(`${baseUrl}/autos?page=${page}&size=10`);
+      const response = await fetch(
+        `${baseUrl}/autos?page=${page}&size=10&sort=dateOfCreated,desc`
+      );
       const data = await response.json();
       const newAutos = data._embedded.autos;
 
