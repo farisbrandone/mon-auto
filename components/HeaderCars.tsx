@@ -31,7 +31,6 @@ w-screen    text-white flex flex-col gap-0"
 
       <div className="  flex items-center justify-between bg-[#333333] px-4  sm:py-2 h-[60px] lg:h-[80px]  ">
         <p className=" text-[25px] sm:text-3xl select-none">Auto-Occaz.com</p>
-
         <div className="hidden lg:flex gap-4 items-center">
           <div
             className="flex items-center gap-1  cursor-pointer "

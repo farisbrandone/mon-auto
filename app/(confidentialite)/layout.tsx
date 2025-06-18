@@ -8,7 +8,10 @@ import { Inter, Playfair_Display } from "next/font/google";
 }); */
 
 export const metadata: Metadata = {
-  title: " Politique de confidentialité MonAuto.com",
+  title: " Politique de confidentialité auto-occaz.com",
+  icons: {
+    icon: "/logo-sans.ico", // You can add your logo as favicon too
+  },
   description:
     "Le site de référence pour l'achat et la vente de véhicule neuf et d'occasion",
 };

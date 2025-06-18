@@ -23,9 +23,19 @@ const playfair = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Mon auto.com",
+  title: "auto-occaz.com",
   description:
     "Le site de référence pour l'achat et la vente de véhicule neuf et d'occasion",
+  icons: {
+    icon: "/logo-sans.ico", // You can add your logo as favicon too
+  },
+  openGraph: {
+    // Optional: for social media sharing
+    title: "auto-occaz.com",
+    description:
+      "Le site de référence pour l'achat et la vente de véhicule neuf et d'occasion",
+    images: "/logo-sans.ico", // Your logo for social sharing
+  },
 };
 
 export default function RootLayout({
